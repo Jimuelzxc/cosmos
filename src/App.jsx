@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/cosmos/" element={<MainPage />} />
+        <Route exact path="/" element={<MainPage />} />
       </Routes>
     </>
   );
