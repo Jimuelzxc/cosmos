@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Chats from "./components/Chats/Chats";
 import Input from "./components/Input";
 import { useEffect, useRef, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [btnAvailable, setBtnAvailable] = useState(true);
@@ -45,6 +46,7 @@ function App() {
           btnState={[btnAvailable, setBtnAvailable]}
         />
       </div>
+
     </>
   );
 }
