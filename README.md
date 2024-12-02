@@ -1,7 +1,10 @@
 # LOGO
-![alt text](https://github.com/Jimuelzxc/cosmos/blob/main/src/assets/images/logos.png?raw=true)
+![alt text](https://github.com/Jimuelzxc/cosmos/blob/main/src/assets/images/Logo%20text.png?raw=true)
+![alt text](https://github.com/Jimuelzxc/cosmos/blob/main/src/assets/images/Logo.png?raw=true)
 
 # FEATURES
-![alt text](https://github.com/Jimuelzxc/cosmos/blob/main/src/assets/images/Features.png?raw=true)
+![alt text](https://github.com/Jimuelzxc/cosmos/blob/main/src/assets/images/Ask%20cosmos.png?raw=true)
+![alt text](https://github.com/Jimuelzxc/cosmos/blob/main/src/assets/images/Response%20cosmos.png?raw=true)
+
 
 
