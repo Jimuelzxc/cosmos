@@ -1,0 +1,85 @@
+.parent {
+  background-color: #020308;
+  font-family: Arial, sans-serif;
+
+  box-shadow: 2px -75px 120px -11px rgba(80, 162, 239, 0.2) inset;
+  -webkit-box-shadow: 2px -75px 120px -11px rgba(80, 162, 239, 0.2) inset;
+  -moz-box-shadow: 2px -75px 120px -11px rgba(80, 162, 239, 0.2) inset;
+}
+.logo {
+  font-size: 2.6rem;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: bold;
+  font-weight: lighter;
+  background: linear-gradient(60deg, #50a2ef, white, white, #50a2ef);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-move 5s infinite;
+}
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+div {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.nav {
+  -webkit-box-shadow: 0px 17px 10px -6px rgba(2, 3, 8, 1);
+  -moz-box-shadow: 0px 17px 10px -6px rgba(2, 3, 8, 1);
+  box-shadow: 0px 17px 10px -6px rgba(2, 3, 8, 1);
+}
+.load-bar {
+  height: 20px; /* Height of each bar */
+  background: linear-gradient(90deg, #020308,#091120 , #020308); /* Gradient effect */
+  border-radius: 5px; /* Rounded edges */
+  animation: gradient-animation 2s infinite; /* Animation for dynamic effect */
+}
+
+/* Optional: Create a dynamic gradient animation */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.load-bar {
+  background-size: 200% 200%; /* Ensure gradient animation flows smoothly */
+}
+li {
+  list-style-type: none;
+}
+strong{
+  font-size: 1.2em;
+}
+br{
+  margin: 10px 0;
+}
+em {
+  font-weight: medium;
+  opacity: 50%;
+}
