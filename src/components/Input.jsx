@@ -1,7 +1,7 @@
 import { BiSolidSend } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-import sound from "../assets/done.wav"
+import sound from "../assets/done.wav";
 import axios from "axios";
 export default function input({ state, setFirstMessage, setIsLoad, btnState }) {
   const [btnAvailable, setBtnAvailable] = btnState;
@@ -41,27 +41,28 @@ export default function input({ state, setFirstMessage, setIsLoad, btnState }) {
       } finally {
         setIsLoad(false);
         setBtnAvailable(true);
-        let audio = document.createElement("audio")
-        audio.src = sound
-        audio.play()
-
-
+        let audio = document.createElement("audio");
+        audio.src = sound;
+        audio.play();
       }
     }
   }
   return (
-    <div className="mx-[0px] lg:mx-[450px] px-[30px] py-[70px]">
-      <div className="border border-secondary-250 flex flex-row rounded-full p-2 bg-secondary-100 opacity-80">
+    <div className="mx-[0px] lg:mx-[450px] px-[20px] py-[30px]">
+      <div className="border border-secondary-250 flex flex-row rounded-full p-2 px-[20px] bg-secondary-100 opacity-80">
         <input
           type="text"
-          className="grow text-white text-[1.3em] px-[30px] font-thin"
+          className="grow text-white text-[1em] px-2 font-thin"
           placeholder="Ask cosmos"
           ref={inputRef}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => (e.key === "Enter" ? handleChats() : null)}
         />
-        <div className="bg-primary rounded-full cursor-pointer p-1" onClick={handleChats}>
+        <div
+          className="bg-primary rounded-full cursor-pointer translate-x-2"
+          onClick={handleChats}
+        >
           <BiSolidSend className="text-[1.3em] m-2 text-white" />
         </div>
       </div>
