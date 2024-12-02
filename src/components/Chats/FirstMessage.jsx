@@ -4,7 +4,7 @@ export default function FirstMessage() {
   return (
     <div className={`m-auto text-white flex flex-col gap-3`}>
       <h2 className="text-center text-secondary-300">Hi there, User</h2>
-      <h1 className="text-center">Can i help you with anything?</h1>
+      <h1 className="text-center">Can i help you with</h1>
       <div className="flex flex-row justify-center mt-10 gap-5">
         <PromptTemplate icon={<BiSolidBookAlt />} text="Summarize book" />
         <PromptTemplate icon={<BiQuestionMark />} text="How to anything" />
