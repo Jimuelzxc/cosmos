@@ -3,7 +3,15 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import sound from "../assets/done.wav";
 import axios from "axios";
-export default function input({ state, setFirstMessage, setIsLoad, btnState }) {
+
+export default function Input({
+  state,
+  setFirstMessage,
+  setIsLoad,
+  btnState,
+  model,
+  apiKey,
+}) {
   const [btnAvailable, setBtnAvailable] = btnState;
   const [messages, setMessages] = state;
   const [inputValue, setInputValue] = useState("");
@@ -24,17 +32,64 @@ export default function input({ state, setFirstMessage, setIsLoad, btnState }) {
       setBtnAvailable(false);
 
       try {
-        const response = await axios.post(
-          "https://api.pawan.krd/cosmosrp/v1",
-          {
-            model: "cosmosrp",
-            messages: newMessage,
-          },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        const data = response.data.choices[0].message.content;
+        let response;
+        switch (model) {
+          case "cosmos":
+            response = await axios.post(
+              "https://api.pawan.krd/cosmosrp/v1",
+              {
+                model: "cosmosrp",
+                messages: newMessage,
+              },
+              {
+                headers: { "Content-Type": "application/json" },
+              }
+            );
+            break;
+          case "openrouter":
+            response = await axios.post(
+              "https://openrouter.ai/api/v1/chat/completions",
+              {
+                model: "gryphe/mythomax-l2-13b",
+                messages: newMessage,
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${apiKey}`,
+                },
+              }
+            );
+            break;
+          case "gemini":
+            response = await axios.post(
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
+              {
+                contents: newMessage
+                  .slice(1)
+                  .map(({ role: a, content: b, ...rest }) => ({
+                    role: a == "assistant" ? "model" : "user",
+                    parts: [{ text: b }],
+                  })),
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                params: {
+                  key: apiKey,
+                },
+              }
+            );
+            break;
+          default:
+            throw new Error("Invalid model selected");
+        }
+
+        const data =
+          model == "gemini"
+            ? response.data.candidates[0].content.parts[0].text
+            : response.data.choices[0].message.content;
         setMessages([...newMessage, { role: "assistant", content: data }]);
       } catch (error) {
         console.log(error);
@@ -47,6 +102,7 @@ export default function input({ state, setFirstMessage, setIsLoad, btnState }) {
       }
     }
   }
+
   return (
     <div className="mx-[0px] lg:mx-[450px] px-[20px] py-[30px]">
       <div className="border border-secondary-250 flex flex-row rounded-full p-2 px-[20px] bg-secondary-100 opacity-80">

@@ -18,6 +18,8 @@ export default function MainPage() {
       content: "Hi there, User can i help you with anything?",
     },
   ]);
+  const [selectedModel, setSelectedModel] = useState("cosmos");
+  const [apiKey, setApiKey] = useState("");
   const chatContainerRef = useRef(null);
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -30,7 +32,10 @@ export default function MainPage() {
   return (
     <>
       <div className="h-screen w-full bg-black parent flex flex-col">
-        <Navbar />
+        <Navbar
+          modelState={[selectedModel, setSelectedModel]}
+          keyState={[apiKey, setApiKey]}
+        />
         <Chats
           state={[messages, setMessages]}
           firstMessage={firstMessage}
@@ -42,6 +47,8 @@ export default function MainPage() {
           setFirstMessage={setFirstMessage}
           setIsLoad={setIsLoad}
           btnState={[btnAvailable, setBtnAvailable]}
+          model={selectedModel}
+          apiKey={apiKey}
         />
       </div>
     </>
